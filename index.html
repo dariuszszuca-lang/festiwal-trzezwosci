@@ -7,107 +7,137 @@
 <meta name="description" content="III Festiwal Trzeźwości MyWay. 8 sierpnia 2026, Kąpino. Koncert Backstage, dmuchańce, grill, konkursy, wręczenie medali. Bilety w przedsprzedaży 150 zł.">
 <meta property="og:title" content="III Festiwal Trzeźwości MyWay — 8 sierpnia 2026">
 <meta property="og:description" content="Koncert Backstage, dmuchańce, grill, konkursy, medale. Kąpino. Bilety od 150 zł.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://festiwaltrzezwosci.pl">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0a0a0f;--bg2:#111118;
-  --text:#fff;--text2:#94a3b8;--text3:#64748b;
-  --accent:#f59e0b;--accent2:#d97706;
-  --teal:#0d9488;--teal2:#0f766e;
-  --card:rgba(255,255,255,0.05);--border:rgba(255,255,255,0.08);
+  --bg:#fffdf8;--bg2:#f8f5f0;--bg3:#f0ece4;
+  --text:#1a1612;--text2:#5a5047;--text3:#8a8078;
+  --accent:#e85d04;--accent2:#dc4c00;--accent-soft:rgba(232,93,4,0.08);
+  --green:#2d7a4f;--green-soft:rgba(45,122,79,0.08);
+  --gold:#d4a017;--gold-soft:rgba(212,160,23,0.08);
+  --card:#fff;--border:#e8e0d6;
+  --red:#c0392b;
 }
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
 .serif{font-family:'DM Serif Display',serif}
 a{color:inherit;text-decoration:none}
 
 /* NAV */
-nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(255,253,248,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 nav .inner{max-width:1000px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
-nav .logo{font-weight:800;font-size:0.9rem;letter-spacing:0.02em}
+nav .logo{font-weight:800;font-size:0.95rem;display:flex;align-items:center;gap:8px}
 nav .logo span{color:var(--accent)}
-nav .cta-btn{padding:10px 24px;background:var(--accent);color:#000;font-weight:700;font-size:0.85rem;border-radius:8px;transition:all .2s}
+nav .nav-links{display:flex;gap:20px;align-items:center;font-size:0.85rem;color:var(--text2)}
+nav .nav-links a:hover{color:var(--accent)}
+nav .cta-btn{padding:10px 24px;background:var(--accent);color:#fff;font-weight:700;font-size:0.85rem;border-radius:10px;transition:all .2s}
 nav .cta-btn:hover{background:var(--accent2);transform:translateY(-1px)}
+@media(max-width:600px){nav .nav-links{display:none}}
 
-/* HERO */
-.hero{padding:140px 24px 80px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(245,158,11,0.08) 0%,transparent 70%);pointer-events:none}
-.hero .edition{font-size:0.75rem;font-weight:700;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:16px}
-.hero h1{font-size:clamp(2.5rem,6vw,4rem);line-height:1.1;margin-bottom:20px}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero .date-badge{display:inline-flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:100px;padding:12px 28px;font-size:0.9rem;color:var(--text2);margin-bottom:24px}
-.hero .date-badge .dot{width:10px;height:10px;border-radius:50%;background:var(--teal);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-.hero .location{font-size:0.85rem;color:var(--text3);margin-bottom:32px}
-.hero .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-primary{padding:16px 36px;background:var(--accent);color:#000;font-weight:700;font-size:1rem;border-radius:12px;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
-.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(245,158,11,0.3)}
-.btn-secondary{padding:16px 36px;border:1px solid var(--border);color:var(--text2);font-weight:600;font-size:1rem;border-radius:12px;transition:all .2s}
-.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
-.price-info{margin-top:20px;font-size:0.85rem;color:var(--text3)}
-.price-info .old{text-decoration:line-through;color:var(--text3)}
-.price-info .new{color:var(--accent);font-weight:700;font-size:1.1rem}
+/* HERO FULL-SCREEN */
+.hero-full{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg-full{position:absolute;inset:0;z-index:0}
+.hero-bg-full img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.55) 50%,rgba(0,0,0,0.7) 100%)}
+.hero-content-full{position:relative;z-index:2;text-align:center;padding:80px 24px 40px;max-width:800px}
+.hero-edition-badge{font-size:0.85rem;font-weight:800;letter-spacing:0.3em;color:#fff;background:var(--accent);display:inline-block;padding:8px 24px;border-radius:100px;margin-bottom:24px;box-shadow:0 4px 20px rgba(232,93,4,0.4)}
+.hero-title{font-size:clamp(3.5rem,10vw,7rem);line-height:0.95;color:#fff;margin-bottom:24px;text-shadow:0 4px 40px rgba(0,0,0,0.3)}
+.hero-title em{font-style:normal;color:var(--accent);display:block}
+.hero-date{font-size:1.2rem;font-weight:700;color:#fff;letter-spacing:0.08em;margin-bottom:8px}
+.hero-location{font-size:0.95rem;color:rgba(255,255,255,0.7);margin-bottom:20px}
+.hero-band{font-size:0.95rem;color:rgba(255,255,255,0.8);margin-bottom:28px;background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);display:inline-block;padding:10px 24px;border-radius:12px;border:1px solid rgba(255,255,255,0.15)}
+.hero-band strong{color:#fff}
+.hero-price{margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:12px}
+.hero-price-old{font-size:1.3rem;color:rgba(255,255,255,0.4);text-decoration:line-through}
+.hero-price-new{font-size:3rem;font-weight:800;color:var(--accent);text-shadow:0 2px 16px rgba(232,93,4,0.4)}
+.hero-price-label{font-size:0.8rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em}
+.hero-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+.hero-btn-primary{padding:18px 48px;background:var(--accent);color:#fff;font-weight:800;font-size:1.15rem;border-radius:14px;letter-spacing:0.05em;transition:all .2s;box-shadow:0 8px 32px rgba(232,93,4,0.4)}
+.hero-btn-primary:hover{background:var(--accent2);transform:translateY(-3px);box-shadow:0 12px 48px rgba(232,93,4,0.5)}
+.hero-btn-secondary{padding:18px 36px;border:2px solid rgba(255,255,255,0.3);color:#fff;font-weight:700;font-size:1rem;border-radius:14px;transition:all .2s}
+.hero-btn-secondary:hover{border-color:#fff;background:rgba(255,255,255,0.1)}
+.hero-kids{font-size:0.85rem;color:rgba(255,255,255,0.6)}
+
+/* BUTTONS for rest of page */
+.btn-primary{padding:16px 36px;background:var(--accent);color:#fff;font-weight:700;font-size:1rem;border-radius:12px;transition:all .2s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(232,93,4,0.2)}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,93,4,0.3)}
 
 /* SECTIONS */
 section{padding:80px 24px}
 .section-inner{max-width:1000px;margin:0 auto}
-.section-label{font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.section-title{font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.15;margin-bottom:12px}
-.section-desc{font-size:1rem;color:var(--text2);line-height:1.7;max-width:560px}
+.section-label{font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.section-title{font-size:clamp(2rem,4vw,2.8rem);line-height:1.12;margin-bottom:12px}
+.section-desc{font-size:1rem;color:var(--text2);line-height:1.7;max-width:540px}
 .alt-bg{background:var(--bg2)}
 
 /* PROGRAM */
-.program-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:40px}
-.program-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;transition:all .2s}
-.program-card:hover{border-color:rgba(245,158,11,0.3);transform:translateY(-2px)}
-.program-card .time{font-size:0.75rem;font-weight:700;color:var(--accent);letter-spacing:0.1em;margin-bottom:8px}
-.program-card h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
-.program-card p{font-size:0.85rem;color:var(--text2);line-height:1.5}
-.program-card .icon{font-size:1.5rem;margin-bottom:10px}
+.program-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:36px}
+.program-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;transition:all .2s}
+.program-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.06);border-color:var(--accent)}
+.program-card .icon{font-size:2rem;margin-bottom:10px}
+.program-card .time{font-size:0.7rem;font-weight:700;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px}
+.program-card h3{font-size:1rem;font-weight:700;margin-bottom:5px}
+.program-card p{font-size:0.82rem;color:var(--text2);line-height:1.5}
 
 /* BAND */
-.band-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;margin-top:40px;text-align:center}
-.band-card h3{font-size:1.5rem;font-weight:700;margin-bottom:8px}
-.band-card .genre{font-size:0.85rem;color:var(--accent);margin-bottom:16px}
-.band-card p{font-size:0.95rem;color:var(--text2);line-height:1.6;max-width:500px;margin:0 auto 20px}
-.band-card a{color:var(--accent);font-weight:600;font-size:0.9rem}
-
-/* GALLERY */
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-top:40px}
-.gallery img{width:100%;height:250px;object-fit:cover;border-radius:14px;border:1px solid var(--border)}
+.band-section{background:linear-gradient(135deg,#1a1612 0%,#2a2420 100%);color:#fff;border-radius:24px;padding:48px;margin-top:40px;display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.band-photo{flex:1;min-width:280px}
+.band-photo img{width:100%;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+.band-info{flex:1;min-width:280px}
+.band-info .badge{display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);padding:4px 12px;border-radius:6px;margin-bottom:12px}
+.band-info h3{font-size:1.8rem;margin-bottom:6px}
+.band-info .credits{font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:16px}
+.band-info p{font-size:0.95rem;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:16px}
+.band-info a{color:var(--gold);font-weight:600;font-size:0.9rem}
 
 /* PRICING */
-.price-card{background:var(--card);border:2px solid var(--accent);border-radius:20px;padding:40px;text-align:center;max-width:420px;margin:40px auto 0;position:relative;overflow:hidden}
-.price-card::before{content:'PRZEDSPRZEDAŻ';position:absolute;top:16px;right:-30px;background:var(--accent);color:#000;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;padding:4px 40px;transform:rotate(45deg)}
-.price-card .old-price{font-size:1.3rem;color:var(--text3);text-decoration:line-through;margin-bottom:4px}
-.price-card .new-price{font-size:3rem;font-weight:800;color:var(--accent);margin-bottom:4px}
-.price-card .new-price span{font-size:1rem;font-weight:500;color:var(--text3)}
-.price-card .save{font-size:0.85rem;color:var(--teal);font-weight:600;margin-bottom:20px}
-.price-card .info{font-size:0.8rem;color:var(--text3);margin-bottom:24px;line-height:1.5}
+.price-card{background:var(--card);border:2px solid var(--accent);border-radius:20px;padding:40px;text-align:center;max-width:400px;margin:36px auto 0;position:relative;overflow:hidden;box-shadow:0 8px 40px rgba(232,93,4,0.1)}
+.price-card .ribbon{position:absolute;top:18px;right:-32px;background:var(--accent);color:#fff;font-size:0.6rem;font-weight:700;letter-spacing:0.08em;padding:5px 40px;transform:rotate(45deg)}
+.price-card .old-price{font-size:1.2rem;color:var(--text3);text-decoration:line-through}
+.price-card .new-price{font-size:3rem;font-weight:800;color:var(--accent)}
+.price-card .new-price span{font-size:1rem;font-weight:400;color:var(--text3)}
+.price-card .save{color:var(--green);font-weight:600;font-size:0.85rem;margin:4px 0 16px}
+.price-card .info{font-size:0.82rem;color:var(--text3);margin-bottom:20px;line-height:1.5}
 
-/* ARCHIVE */
-.archive-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:100px;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text3);margin-bottom:20px}
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:32px}
+.gallery img{width:100%;height:220px;object-fit:cover;border-radius:14px;border:1px solid var(--border);transition:transform .2s}
+.gallery img:hover{transform:scale(1.02)}
+
+/* EDITIONS */
+.editions-row{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.edition-card{flex:1;min-width:200px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center;transition:all .2s}
+.edition-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.edition-card .ed-num{font-size:2rem;font-weight:800;color:var(--accent);margin-bottom:4px}
+.edition-card .ed-year{font-size:0.85rem;color:var(--text3);margin-bottom:8px}
+.edition-card .ed-link{font-size:0.82rem;color:var(--accent);font-weight:600}
 
 /* FAQ */
-.faq-list{margin-top:32px;max-width:680px}
-.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-list{margin-top:28px;max-width:680px}
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
 .faq-q{font-size:1rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
 .faq-q::after{content:'+';font-size:1.3rem;color:var(--text3);transition:transform .2s}
 .faq-item.open .faq-q::after{transform:rotate(45deg);color:var(--accent)}
 .faq-a{font-size:0.9rem;color:var(--text2);line-height:1.7;max-height:0;overflow:hidden;transition:all .3s}
-.faq-item.open .faq-a{max-height:300px;padding-top:12px}
+.faq-item.open .faq-a{max-height:300px;padding-top:10px}
+
+/* CTA BOTTOM */
+.cta-bottom{background:linear-gradient(135deg,var(--accent) 0%,#f97316 100%);border-radius:24px;padding:56px 40px;text-align:center;color:#fff;max-width:1000px;margin:0 auto}
+.cta-bottom h2{font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:12px}
+.cta-bottom p{opacity:0.85;margin-bottom:24px;font-size:1rem}
+.cta-bottom .btn-white{padding:16px 40px;background:#fff;color:var(--accent);font-weight:700;font-size:1rem;border-radius:12px;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.cta-bottom .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.15)}
 
 /* FOOTER */
-footer{text-align:center;padding:40px 24px;font-size:0.8rem;color:var(--text3);border-top:1px solid var(--border)}
+footer{text-align:center;padding:32px 24px;font-size:0.8rem;color:var(--text3);border-top:1px solid var(--border)}
 footer a{color:var(--accent)}
 
 @media(max-width:600px){
-  .hero h1{font-size:2rem}
-  .program-grid{grid-template-columns:1fr}
+  .hero h1{font-size:2.2rem}
+  .program-grid{grid-template-columns:1fr 1fr}
   .btn-primary,.btn-secondary{width:100%;justify-content:center}
   .hero .cta-row{flex-direction:column}
+  .band-section{flex-direction:column;padding:28px}
 }
 </style>
 </head>
@@ -115,84 +145,97 @@ footer a{color:var(--accent)}
 
 <nav>
 <div class="inner">
-  <div class="logo">Festiwal <span>Trzeźwości</span></div>
-  <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="cta-btn">Kup bilet →</a>
+  <div class="logo">🎉 Festiwal <span>Trzeźwości</span></div>
+  <div class="nav-links">
+    <a href="#program">Program</a>
+    <a href="#bilety">Bilety</a>
+    <a href="#edycje">Edycje</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="cta-btn">Kup bilet →</a>
+  </div>
 </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="edition">III edycja</div>
-  <h1 class="serif">Festiwal <em>Trzeźwości</em></h1>
-  <div class="date-badge">
-    <div class="dot"></div>
-    <span><strong>8 sierpnia 2026</strong> · sobota · od 10:00</span>
+<section class="hero-full">
+  <div class="hero-bg-full">
+    <img src="images/festiwal-2-1.jpg" alt="Festiwal Trzeźwości">
+    <div class="hero-overlay"></div>
   </div>
-  <div class="location">📍 ul. Wichrowe Wzgórza 21, Kąpino (woj. pomorskie)</div>
-  <div class="cta-row">
-    <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="btn-primary">Kup bilet — 150 zł →</a>
-    <a href="#program" class="btn-secondary">Zobacz program</a>
-  </div>
-  <div class="price-info">
-    <span class="old">200 zł</span> → <span class="new">150 zł</span> w przedsprzedaży
+  <div class="hero-content-full">
+    <div class="hero-edition-badge">🎊 III EDYCJA</div>
+    <h1 class="serif hero-title">FESTIWAL<br><em>TRZEŹWOŚCI</em></h1>
+    <div class="hero-date">8 SIERPNIA 2026 · SOBOTA · OD 10:00</div>
+    <div class="hero-location">📍 ul. Wichrowe Wzgórza 21, Kąpino</div>
+    <div class="hero-band">🎸 Koncert <strong>BACKSTAGE</strong> · Półfinaliści Must Be The Music & Mam Talent</div>
+    <div class="hero-price">
+      <span class="hero-price-old">200 zł</span>
+      <span class="hero-price-new">150 zł</span>
+      <span class="hero-price-label">przedsprzedaż</span>
+    </div>
+    <div class="hero-cta-row">
+      <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="hero-btn-primary">🎫 KUP BILET</a>
+      <a href="#program" class="hero-btn-secondary">PROGRAM ↓</a>
+    </div>
+    <div class="hero-kids">Dzieci do 17 lat — BEZPŁATNIE</div>
   </div>
 </section>
 
 <!-- PROGRAM -->
 <section class="alt-bg" id="program">
 <div class="section-inner">
-  <div class="section-label">Program</div>
-  <h2 class="section-title serif">Cały dzień atrakcji</h2>
-  <p class="section-desc">Od 10:00 do późnego wieczora. Muzyka, emocje, zabawa — bez alkoholu.</p>
+  <div class="section-label">Program dnia</div>
+  <h2 class="section-title serif">Od rana do nocy 🌅</h2>
+  <p class="section-desc">Muzyka, emocje, zabawa — cały dzień w bezalkoholowej atmosferze pełnej radości.</p>
 
   <div class="program-grid">
     <div class="program-card">
-      <div class="icon">🎤</div>
-      <div class="time">WIECZÓR</div>
+      <div class="icon">🎸</div>
+      <div class="time">Gwiazdka wieczoru</div>
       <h3>Koncert Backstage</h3>
-      <p>Coverband grający największe hity. Energia, taniec, świetne brzmienie na żywo.</p>
+      <p>Covery w akustycznych aranżacjach. Półfinaliści Must Be The Music i Mam Talent.</p>
     </div>
     <div class="program-card">
       <div class="icon">🏅</div>
-      <div class="time">CEREMONIA</div>
+      <div class="time">Ceremonia</div>
       <h3>Wręczenie medali</h3>
-      <p>Uhonorowanie tych, którzy przeszli drogę do trzeźwości. Emocjonalny moment festiwalu.</p>
+      <p>Uhonorowanie tych, którzy przeszli drogę do trzeźwości.</p>
     </div>
     <div class="program-card">
       <div class="icon">🎙️</div>
-      <div class="time">PRZEMÓWIENIE</div>
+      <div class="time">Na scenie</div>
       <h3>Natalia i Krystian</h3>
-      <p>Słowa od założycieli MyWay. O drodze, o zmianie, o tym dlaczego to robimy.</p>
+      <p>Słowa od założycieli MyWay. O drodze i zmianie.</p>
     </div>
     <div class="program-card">
       <div class="icon">🎩</div>
-      <div class="time">DLA WSZYSTKICH</div>
+      <div class="time">Dla wszystkich</div>
       <h3>Pokazy magii</h3>
-      <p>Profesjonalny magik — pokazy dla dorosłych i dzieci. Gwarantowane „wow".</p>
+      <p>Profesjonalny magik dla dorosłych i dzieci.</p>
     </div>
     <div class="program-card">
       <div class="icon">🏰</div>
-      <div class="time">DLA DZIECI</div>
-      <h3>Dmuchańce i zabawy</h3>
-      <p>Zjeżdżalnie, zamki dmuchane, gry i konkursy z nagrodami. Dzieci do 17 lat wchodzą za darmo.</p>
+      <div class="time">Dla dzieci</div>
+      <h3>Dmuchańce</h3>
+      <p>Zjeżdżalnie i zamki dmuchane. Dzieci wchodzą za darmo!</p>
     </div>
     <div class="program-card">
       <div class="icon">🏆</div>
-      <div class="time">DLA DZIECI</div>
-      <h3>Konkursy z nagrodami</h3>
-      <p>Sportowe i kreatywne konkursy dla najmłodszych. Każdy wygrywa.</p>
+      <div class="time">Dla dzieci</div>
+      <h3>Gry i konkursy</h3>
+      <p>Sportowe i kreatywne konkursy z nagrodami.</p>
     </div>
     <div class="program-card">
       <div class="icon">🔥</div>
-      <div class="time">WIECZÓR</div>
+      <div class="time">Wieczór</div>
       <h3>Grill i ognisko</h3>
-      <p>Wspólne biesiadowanie przy ognisku. Kiełbaski, ciepłe napoje, rozmowy.</p>
+      <p>Kiełbaski, ognisko, ciepłe napoje, rozmowy.</p>
     </div>
     <div class="program-card">
       <div class="icon">🍦</div>
-      <div class="time">CAŁY DZIEŃ</div>
+      <div class="time">Cały dzień</div>
       <h3>Lody i przekąski</h3>
-      <p>Lody, napoje, słodycze — dostępne na terenie przez cały dzień.</p>
+      <p>Lody, napoje, słodycze na terenie.</p>
     </div>
   </div>
 </div>
@@ -202,12 +245,23 @@ footer a{color:var(--accent)}
 <section>
 <div class="section-inner">
   <div class="section-label">Gwiazdka wieczoru</div>
-  <h2 class="section-title serif">Backstage Coverband</h2>
-  <div class="band-card">
-    <h3>🎸 Backstage</h3>
-    <div class="genre">Coverband · Muzyka na żywo</div>
-    <p>Profesjonalny zespół grający największe hity polskiej i światowej muzyki. Ekskluzywna oprawa muzyczna z najlepszym akustycznym brzmieniem.</p>
-    <a href="https://backstage.com.pl" target="_blank">backstage.com.pl →</a>
+  <h2 class="section-title serif">Backstage Coverband 🎸</h2>
+
+  <div class="band-section">
+    <div class="band-photo">
+      <img src="images/backstage-plakat.jpg" alt="Backstage Coverband" onerror="this.style.display='none'">
+      <div style="background:#222;border-radius:16px;padding:40px;text-align:center">
+        <img src="images/backstage-logo.png" alt="Backstage logo" style="max-width:280px;margin-bottom:16px">
+        <p style="color:rgba(255,255,255,0.5);font-size:0.85rem">Covery w akustycznych aranżacjach</p>
+      </div>
+    </div>
+    <div class="band-info">
+      <span class="badge">Gwiazdka wieczoru</span>
+      <h3>Backstage</h3>
+      <div class="credits">Półfinaliści Must Be The Music III · Mam Talent VI</div>
+      <p>Profesjonalny coverband grający największe hity polskiej i światowej muzyki w akustycznych aranżacjach. Energia, świetne brzmienie na żywo i gwarancja zabawy.</p>
+      <a href="https://backstage.com.pl" target="_blank">backstage.com.pl →</a>
+    </div>
   </div>
 </div>
 </section>
@@ -216,18 +270,19 @@ footer a{color:var(--accent)}
 <section class="alt-bg" id="bilety">
 <div class="section-inner" style="text-align:center">
   <div class="section-label">Bilety</div>
-  <h2 class="section-title serif">Przedsprzedaż trwa</h2>
-  <p class="section-desc" style="margin:0 auto">Zaoszczędź 50 zł kupując teraz. Dzieci do 17 lat wchodzą bezpłatnie.</p>
+  <h2 class="section-title serif">Przedsprzedaż trwa 🎫</h2>
+  <p class="section-desc" style="margin:0 auto">Zaoszczędź 50 zł kupując teraz. Dzieci do 17 lat za darmo.</p>
 
   <div class="price-card">
+    <div class="ribbon">PRZEDSPRZEDAŻ</div>
     <div class="old-price">200 zł</div>
     <div class="new-price">150 <span>zł / os.</span></div>
-    <div class="save">Oszczędzasz 50 zł</div>
+    <div class="save">🎉 Oszczędzasz 50 zł!</div>
     <div class="info">
       Dzieci do 17 lat — BEZPŁATNIE<br>
       W cenie: koncert, atrakcje, grill, lody, dmuchańce
     </div>
-    <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="btn-primary" style="width:100%;justify-content:center">Kup bilet →</a>
+    <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="btn-primary" style="width:100%;justify-content:center">🎫 Kup bilet →</a>
   </div>
 </div>
 </section>
@@ -235,19 +290,47 @@ footer a{color:var(--accent)}
 <!-- GALLERY -->
 <section>
 <div class="section-inner">
-  <div class="archive-badge">📸 II Festiwal Trzeźwości — 2025</div>
-  <h2 class="section-title serif">Tak było rok temu</h2>
-  <p class="section-desc">Dmuchańce, magia, grille i uśmiechy. W tym roku będzie jeszcze lepiej.</p>
+  <div class="section-label">Poprzednie edycje</div>
+  <h2 class="section-title serif">Tak było u nas 📸</h2>
+  <p class="section-desc">Dmuchańce, ogniska, magia i uśmiechy. W tym roku będzie jeszcze lepiej!</p>
   <div class="gallery">
-    <img src="images/dmuchance.jpg" alt="Dmuchańce na II Festiwalu Trzeźwości">
-    <img src="images/scena.jpg" alt="Występ na scenie — II Festiwal Trzeźwości">
-    <img src="images/publicznosc.jpg" alt="Publiczność — II Festiwal Trzeźwości">
+    <img src="images/dmuchance.jpg" alt="Dmuchańce — Festiwal Trzeźwości">
+    <img src="images/festiwal-2-2.jpg" alt="Ognisko — Festiwal Trzeźwości">
+    <img src="images/scena.jpg" alt="Scena — Festiwal Trzeźwości">
+    <img src="images/festiwal-2-1.jpg" alt="Teren ośrodka — Festiwal Trzeźwości">
+    <img src="images/publicznosc.jpg" alt="Publiczność — Festiwal Trzeźwości">
+    <img src="images/festiwal-2-3.jpg" alt="Namioty — Festiwal Trzeźwości">
+  </div>
+</div>
+</section>
+
+<!-- EDITIONS -->
+<section class="alt-bg" id="edycje">
+<div class="section-inner">
+  <div class="section-label">Historia</div>
+  <h2 class="section-title serif">Edycje Festiwalu</h2>
+  <div class="editions-row">
+    <a href="edycja-1.html" class="edition-card">
+      <div class="ed-num">I</div>
+      <div class="ed-year">2024</div>
+      <div class="ed-link">Zobacz →</div>
+    </a>
+    <a href="edycja-2.html" class="edition-card">
+      <div class="ed-num">II</div>
+      <div class="ed-year">9 sierpnia 2025</div>
+      <div class="ed-link">Zobacz →</div>
+    </a>
+    <div class="edition-card" style="border-color:var(--accent);background:var(--accent-soft)">
+      <div class="ed-num">III</div>
+      <div class="ed-year">8 sierpnia 2026</div>
+      <div class="ed-link" style="color:var(--accent)">Teraz! 🎉</div>
+    </div>
   </div>
 </div>
 </section>
 
 <!-- FAQ -->
-<section class="alt-bg">
+<section id="faq">
 <div class="section-inner">
   <div class="section-label">Pytania</div>
   <h2 class="section-title serif">Najczęściej pytacie</h2>
@@ -258,7 +341,7 @@ footer a{color:var(--accent)}
     </div>
     <div class="faq-item">
       <div class="faq-q">Czy dzieci potrzebują biletu?</div>
-      <div class="faq-a">Dzieci do 17 lat wchodzą bezpłatnie. Nie potrzebują osobnego biletu.</div>
+      <div class="faq-a">Dzieci do 17 lat wchodzą bezpłatnie bez biletu.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Co jest w cenie biletu?</div>
@@ -269,27 +352,25 @@ footer a{color:var(--accent)}
       <div class="faq-a">ul. Wichrowe Wzgórza 21, Kąpino (woj. pomorskie). Parking na miejscu. Z Trójmiasta ok. 20 minut samochodem.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Do kiedy obowiązuje cena przedsprzedaży?</div>
-      <div class="faq-a">Przedsprzedaż trwa do wyczerpania puli biletów w promocyjnej cenie. Po tym cena wraca do 200 zł.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Czy mogę kupić bilet na miejscu?</div>
-      <div class="faq-a">Bilety dostępne wyłącznie online — przez stronę. Kupując wcześniej pomagasz nam zaplanować atrakcje i materiały.</div>
+      <div class="faq-q">Do kiedy przedsprzedaż?</div>
+      <div class="faq-a">Do wyczerpania puli biletów w cenie 150 zł. Potem cena wraca do 200 zł.</div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- CTA -->
-<section style="text-align:center;padding:80px 24px">
-  <h2 class="serif" style="font-size:2.2rem;margin-bottom:12px">8 sierpnia. Kąpino. Bądź z nami.</h2>
-  <p style="color:var(--text2);margin-bottom:28px;font-size:1rem">Cały dzień muzyki, emocji i zabawy — bez alkoholu.</p>
-  <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="btn-primary">Kup bilet — 150 zł →</a>
+<!-- CTA BOTTOM -->
+<section style="padding-bottom:40px">
+  <div class="cta-bottom">
+    <h2 class="serif">8 sierpnia. Kąpino. Bądź z nami 🎉</h2>
+    <p>Cały dzień muzyki, emocji i zabawy — bez alkoholu. Z radością.</p>
+    <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="btn-white">🎫 Kup bilet — 150 zł</a>
+  </div>
 </section>
 
 <footer>
-  <p>III Festiwal Trzeźwości · Organizator: <a href="https://osrodek-myway.pl">Ośrodek MyWay</a> · Kąpino 2026</p>
-  <p style="margin-top:8px">📞 731 395 295 · <a href="https://osrodek-myway.pl">osrodek-myway.pl</a></p>
+  <p>III Festiwal Trzeźwości · <a href="https://osrodek-myway.pl">Ośrodek MyWay</a> · Kąpino 2026</p>
+  <p style="margin-top:6px">📞 731 395 295 · <a href="https://osrodek-myway.pl">osrodek-myway.pl</a></p>
 </footer>
 
 <script>
@@ -301,6 +382,5 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 </script>
-
 </body>
 </html>
