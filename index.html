@@ -8,6 +8,7 @@
 <meta property="og:title" content="III Festiwal Trzeźwości MyWay — 8 sierpnia 2026">
 <meta property="og:description" content="Koncert Backstage, dmuchańce, grill, konkursy, medale. Kąpino. Bilety od 150 zł.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -74,7 +75,10 @@ section{padding:80px 24px}
 .program-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:36px}
 .program-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;transition:all .2s}
 .program-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.06);border-color:var(--accent)}
-.program-card .icon{font-size:2rem;margin-bottom:10px}
+.program-card .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;color:var(--accent)}
+.program-card .icon.teal{background:var(--green-soft);color:var(--green)}
+.program-card .icon.orange{background:var(--accent-soft);color:var(--accent)}
+.program-card .icon.gold{background:var(--gold-soft);color:var(--gold)}
 .program-card .time{font-size:0.7rem;font-weight:700;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px}
 .program-card h3{font-size:1rem;font-weight:700;margin-bottom:5px}
 .program-card p{font-size:0.82rem;color:var(--text2);line-height:1.5}
@@ -145,7 +149,7 @@ footer a{color:var(--accent)}
 
 <nav>
 <div class="inner">
-  <div class="logo">🎉 Festiwal <span>Trzeźwości</span></div>
+  <div class="logo">Festiwal <span>Trzeźwości</span></div>
   <div class="nav-links">
     <a href="#program">Program</a>
     <a href="#bilety">Bilety</a>
@@ -163,18 +167,18 @@ footer a{color:var(--accent)}
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content-full">
-    <div class="hero-edition-badge">🎊 III EDYCJA</div>
+    <div class="hero-edition-badge">III EDYCJA</div>
     <h1 class="serif hero-title">FESTIWAL<br><em>TRZEŹWOŚCI</em></h1>
     <div class="hero-date">8 SIERPNIA 2026 · SOBOTA · OD 10:00</div>
-    <div class="hero-location">📍 ul. Wichrowe Wzgórza 21, Kąpino</div>
-    <div class="hero-band">🎸 Koncert <strong>BACKSTAGE</strong> · Półfinaliści Must Be The Music & Mam Talent</div>
+    <div class="hero-location">ul. Wichrowe Wzgórza 21, Kąpino</div>
+    <div class="hero-band">Koncert <strong>BACKSTAGE</strong> · Półfinaliści Must Be The Music & Mam Talent</div>
     <div class="hero-price">
       <span class="hero-price-old">200 zł</span>
       <span class="hero-price-new">150 zł</span>
       <span class="hero-price-label">przedsprzedaż</span>
     </div>
     <div class="hero-cta-row">
-      <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="hero-btn-primary">🎫 KUP BILET</a>
+      <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="hero-btn-primary">KUP BILET</a>
       <a href="#program" class="hero-btn-secondary">PROGRAM ↓</a>
     </div>
     <div class="hero-kids">Dzieci do 17 lat — BEZPŁATNIE</div>
@@ -185,54 +189,54 @@ footer a{color:var(--accent)}
 <section class="alt-bg" id="program">
 <div class="section-inner">
   <div class="section-label">Program dnia</div>
-  <h2 class="section-title serif">Od rana do nocy 🌅</h2>
+  <h2 class="section-title serif">Od rana do nocy</h2>
   <p class="section-desc">Muzyka, emocje, zabawa — cały dzień w bezalkoholowej atmosferze pełnej radości.</p>
 
   <div class="program-grid">
     <div class="program-card">
-      <div class="icon">🎸</div>
+      <div class="icon orange"><i data-lucide="guitar" style="width:22px;height:22px"></i></div>
       <div class="time">Gwiazdka wieczoru</div>
       <h3>Koncert Backstage</h3>
       <p>Covery w akustycznych aranżacjach. Półfinaliści Must Be The Music i Mam Talent.</p>
     </div>
     <div class="program-card">
-      <div class="icon">🏅</div>
+      <div class="icon gold"><i data-lucide="award" style="width:22px;height:22px"></i></div>
       <div class="time">Ceremonia</div>
       <h3>Wręczenie medali</h3>
       <p>Uhonorowanie tych, którzy przeszli drogę do trzeźwości.</p>
     </div>
     <div class="program-card">
-      <div class="icon">🎙️</div>
+      <div class="icon orange"><i data-lucide="mic" style="width:22px;height:22px"></i></div>
       <div class="time">Na scenie</div>
       <h3>Natalia i Krystian</h3>
       <p>Słowa od założycieli MyWay. O drodze i zmianie.</p>
     </div>
     <div class="program-card">
-      <div class="icon">🎩</div>
+      <div class="icon teal"><i data-lucide="sparkles" style="width:22px;height:22px"></i></div>
       <div class="time">Dla wszystkich</div>
       <h3>Pokazy magii</h3>
       <p>Profesjonalny magik dla dorosłych i dzieci.</p>
     </div>
     <div class="program-card">
-      <div class="icon">🏰</div>
+      <div class="icon teal"><i data-lucide="castle" style="width:22px;height:22px"></i></div>
       <div class="time">Dla dzieci</div>
       <h3>Dmuchańce</h3>
       <p>Zjeżdżalnie i zamki dmuchane. Dzieci wchodzą za darmo!</p>
     </div>
     <div class="program-card">
-      <div class="icon">🏆</div>
+      <div class="icon teal"><i data-lucide="trophy" style="width:22px;height:22px"></i></div>
       <div class="time">Dla dzieci</div>
       <h3>Gry i konkursy</h3>
       <p>Sportowe i kreatywne konkursy z nagrodami.</p>
     </div>
     <div class="program-card">
-      <div class="icon">🔥</div>
+      <div class="icon orange"><i data-lucide="flame" style="width:22px;height:22px"></i></div>
       <div class="time">Wieczór</div>
       <h3>Grill i ognisko</h3>
       <p>Kiełbaski, ognisko, ciepłe napoje, rozmowy.</p>
     </div>
     <div class="program-card">
-      <div class="icon">🍦</div>
+      <div class="icon teal"><i data-lucide="ice-cream-cone" style="width:22px;height:22px"></i></div>
       <div class="time">Cały dzień</div>
       <h3>Lody i przekąski</h3>
       <p>Lody, napoje, słodycze na terenie.</p>
@@ -245,22 +249,28 @@ footer a{color:var(--accent)}
 <section>
 <div class="section-inner">
   <div class="section-label">Gwiazdka wieczoru</div>
-  <h2 class="section-title serif">Backstage Coverband 🎸</h2>
+  <h2 class="section-title serif">Backstage Coverband</h2>
 
   <div class="band-section">
     <div class="band-photo">
-      <img src="images/backstage-plakat.jpg" alt="Backstage Coverband" onerror="this.style.display='none'">
-      <div style="background:#222;border-radius:16px;padding:40px;text-align:center">
-        <img src="images/backstage-logo.png" alt="Backstage logo" style="max-width:280px;margin-bottom:16px">
-        <p style="color:rgba(255,255,255,0.5);font-size:0.85rem">Covery w akustycznych aranżacjach</p>
+      <div style="background:linear-gradient(135deg,#111 0%,#1a1a1a 100%);border-radius:16px;padding:40px 32px;text-align:center">
+        <img src="images/backstage-logo.png" alt="Backstage logo" style="max-width:300px;margin-bottom:20px">
+        <p style="color:rgba(255,255,255,0.4);font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase">Covery w akustycznych aranżacjach</p>
       </div>
     </div>
     <div class="band-info">
       <span class="badge">Gwiazdka wieczoru</span>
-      <h3>Backstage</h3>
+      <h3>Backstage Coverband</h3>
       <div class="credits">Półfinaliści Must Be The Music III · Mam Talent VI</div>
-      <p>Profesjonalny coverband grający największe hity polskiej i światowej muzyki w akustycznych aranżacjach. Energia, świetne brzmienie na żywo i gwarancja zabawy.</p>
-      <a href="https://backstage.com.pl" target="_blank">backstage.com.pl →</a>
+      <p>Profesjonalny coverband grający największe hity polskiej i światowej muzyki w akustycznych aranżacjach. Dwóch charyzmatycznych wokalistów-gitarzystów, ekskluzywne brzmienie na żywo.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0">
+        <span style="font-size:0.75rem;padding:5px 12px;border-radius:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">Must Be The Music III</span>
+        <span style="font-size:0.75rem;padding:5px 12px;border-radius:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">Mam Talent VI</span>
+        <span style="font-size:0.75rem;padding:5px 12px;border-radius:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">Akustycznie</span>
+        <span style="font-size:0.75rem;padding:5px 12px;border-radius:6px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">Eventy & Festiwale</span>
+      </div>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:16px">Grali na setkach eventów w całej Polsce. Na Festiwalu Trzeźwości zagrają specjalny set — energia, taniec i wspólne śpiewanie gwarantowane.</p>
+      <a href="https://backstage.com.pl" target="_blank" style="display:inline-flex;align-items:center;gap:6px">backstage.com.pl <i data-lucide="external-link" style="width:14px;height:14px"></i></a>
     </div>
   </div>
 </div>
@@ -270,19 +280,19 @@ footer a{color:var(--accent)}
 <section class="alt-bg" id="bilety">
 <div class="section-inner" style="text-align:center">
   <div class="section-label">Bilety</div>
-  <h2 class="section-title serif">Przedsprzedaż trwa 🎫</h2>
+  <h2 class="section-title serif">Przedsprzedaż trwa</h2>
   <p class="section-desc" style="margin:0 auto">Zaoszczędź 50 zł kupując teraz. Dzieci do 17 lat za darmo.</p>
 
   <div class="price-card">
     <div class="ribbon">PRZEDSPRZEDAŻ</div>
     <div class="old-price">200 zł</div>
     <div class="new-price">150 <span>zł / os.</span></div>
-    <div class="save">🎉 Oszczędzasz 50 zł!</div>
+    <div class="save">Oszczędzasz 50 zł!</div>
     <div class="info">
       Dzieci do 17 lat — BEZPŁATNIE<br>
       W cenie: koncert, atrakcje, grill, lody, dmuchańce
     </div>
-    <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="btn-primary" style="width:100%;justify-content:center">🎫 Kup bilet →</a>
+    <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="btn-primary" style="width:100%;justify-content:center">Kup bilet →</a>
   </div>
 </div>
 </section>
@@ -291,7 +301,7 @@ footer a{color:var(--accent)}
 <section>
 <div class="section-inner">
   <div class="section-label">Poprzednie edycje</div>
-  <h2 class="section-title serif">Tak było u nas 📸</h2>
+  <h2 class="section-title serif">Tak było u nas</h2>
   <p class="section-desc">Dmuchańce, ogniska, magia i uśmiechy. W tym roku będzie jeszcze lepiej!</p>
   <div class="gallery">
     <img src="images/dmuchance.jpg" alt="Dmuchańce — Festiwal Trzeźwości">
@@ -323,7 +333,7 @@ footer a{color:var(--accent)}
     <div class="edition-card" style="border-color:var(--accent);background:var(--accent-soft)">
       <div class="ed-num">III</div>
       <div class="ed-year">8 sierpnia 2026</div>
-      <div class="ed-link" style="color:var(--accent)">Teraz! 🎉</div>
+      <div class="ed-link" style="color:var(--accent)">Teraz!</div>
     </div>
   </div>
 </div>
@@ -362,9 +372,9 @@ footer a{color:var(--accent)}
 <!-- CTA BOTTOM -->
 <section style="padding-bottom:40px">
   <div class="cta-bottom">
-    <h2 class="serif">8 sierpnia. Kąpino. Bądź z nami 🎉</h2>
+    <h2 class="serif">8 sierpnia. Kąpino. Bądź z nami</h2>
     <p>Cały dzień muzyki, emocji i zabawy — bez alkoholu. Z radością.</p>
-    <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="btn-white">🎫 Kup bilet — 150 zł</a>
+    <a href="https://buy.stripe.com/9B68wH9s5aif8dr4ardIA0e" class="btn-white">Kup bilet — 150 zł</a>
   </div>
 </section>
 
@@ -374,6 +384,7 @@ footer a{color:var(--accent)}
 </footer>
 
 <script>
+lucide.createIcons();
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
     const item = q.parentElement;
