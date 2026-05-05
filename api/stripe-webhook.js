@@ -15,7 +15,7 @@ async function readRaw(req) {
   return Buffer.concat(chunks);
 }
 
-function buildTicketHtml({ name, email, qty, amount, ticketCode, qrDataUrl }) {
+function buildTicketHtml({ name, email, qty, amount, ticketCode }) {
   const qtyLabel = qty === 1 ? '1 bilet' : `${qty} bilety`;
   return `<!DOCTYPE html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
 <body style="margin:0;padding:0;background:#f4f1ea;font-family:Georgia,serif;color:#1a1a1a">
@@ -29,7 +29,7 @@ function buildTicketHtml({ name, email, qty, amount, ticketCode, qrDataUrl }) {
 </td></tr>
 <tr><td style="padding:32px 32px 16px 32px">
 <p style="font-size:17px;line-height:1.6;margin:0 0 12px 0">Cześć ${name},</p>
-<p style="font-size:17px;line-height:1.6;margin:0 0 12px 0">Dziękujemy za zakup biletu. Jest oficjalnie. Czekamy na Ciebie 8 sierpnia w Kąpinie.</p>
+<p style="font-size:17px;line-height:1.6;margin:0 0 12px 0">Dziękujemy za zakup biletu. Czekamy na Ciebie 8 sierpnia w Kąpinie.</p>
 <p style="font-size:17px;line-height:1.6;margin:0">To jest Twój bilet. Pokaż go przy wejściu, na telefonie albo wydrukowany.</p>
 </td></tr>
 <tr><td style="padding:0 32px 24px 32px">
@@ -38,8 +38,8 @@ function buildTicketHtml({ name, email, qty, amount, ticketCode, qrDataUrl }) {
 <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#8a6d3b;margin-bottom:16px">Twój bilet wstępu</div>
 <div style="font-size:24px;font-weight:700;margin-bottom:8px">${name}</div>
 <div style="font-size:18px;color:#444;margin-bottom:20px">${qtyLabel} · ${amount} zł</div>
-<img src="${qrDataUrl}" alt="QR ${ticketCode}" width="200" height="200" style="display:inline-block;width:200px;height:200px;background:#fff;padding:12px;border-radius:8px">
-<div style="font-family:monospace;font-size:13px;color:#666;margin-top:12px;letter-spacing:1px">${ticketCode}</div>
+<img src="cid:qr-ticket" alt="QR ${ticketCode}" width="200" height="200" style="display:inline-block;width:200px;height:200px;background:#fff;padding:12px;border-radius:8px">
+<div style="font-family:'Courier New',monospace;font-size:16px;font-weight:700;color:#1a1a1a;margin-top:14px;letter-spacing:2px;background:#fff;padding:8px 14px;border-radius:6px;display:inline-block">${ticketCode}</div>
 </td></tr>
 </table>
 </td></tr>
@@ -126,7 +126,7 @@ export default async function handler(req, res) {
 
     const shortId = full.id.slice(-10).toUpperCase();
     const ticketCode = `FESTIWAL2026-${shortId}`;
-    const qrDataUrl = await QRCode.toDataURL(ticketCode, { width: 400, margin: 1, color: { dark: '#0D4F4F', light: '#ffffff' } });
+    const qrBuffer = await QRCode.toBuffer(ticketCode, { width: 400, margin: 1, color: { dark: '#0D4F4F', light: '#ffffff' } });
 
     if (!email) {
       console.error('Missing email for session', full.id);
@@ -138,8 +138,13 @@ export default async function handler(req, res) {
       to: [email],
       bcc: [BCC],
       subject: `Twój bilet na III Festiwal Trzeźwości — 8 sierpnia, Kąpino`,
-      html: buildTicketHtml({ name, email, qty, amount, ticketCode, qrDataUrl }),
+      html: buildTicketHtml({ name, email, qty, amount, ticketCode }),
       text: buildTicketPlain({ name, qty, amount, ticketCode }),
+      attachments: [{
+        filename: 'bilet-qr.png',
+        content: qrBuffer.toString('base64'),
+        content_id: 'qr-ticket',
+      }],
     });
 
     console.log('Ticket email sent:', { sessionId: full.id, email, ticketCode, resendId: result.data?.id });
